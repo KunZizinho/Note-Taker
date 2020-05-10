@@ -4,9 +4,9 @@ const path = require("path");
 var noteData;
 
 module.exports = function (app) {
-    fs.readFile("db.json", "utf8", (err, data) =>{
+    fs.readFile("../db/db.json", "utf8", (err, data) =>{
         if(err) throw err;
-        notedata = json.parse(data);
+        noteData = JSON.parse(data);
         console.log("here")
     })
 
@@ -37,11 +37,11 @@ module.exports = function (app) {
         };
 
         let parseData = JSON.stringify(noteData);
-        fs.writeFile(path.join("db.json"), parseData, err => {
+        fs.writeFile(path.join("../db/db.json"), parseData, err => {
             if(err) throw err;
 
         })
         console.log(noteData)
         res.json(noteData);
-    })
-}
+    });
+};
